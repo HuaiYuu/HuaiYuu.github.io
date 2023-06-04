@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+  <main id="result">
+  </main>
+</body>
+</html>
+
+<script>
+function count(input)
+{
+  const countObj = {};
+
+  for (let char of input) 
+  {
+    countObj[char] = (countObj[char] || 0) + 1;
+  }
+
+  return countObj;
+}
+
+
+
+
+
+
+
+function groupByKey(input)
+ {
+  const resultObj = {};
+
+  for (let item of input) 
+  {
+    const { key, value } = item;
+    resultObj[key] = (resultObj[key] || 0) + value;
+  }
+
+  return resultObj;
+}
+
+
+let input1 = ["a", "b", "c", "a", "c", "a", "x"];
+
+console.log(count(input1));
+
+let input2 = [
+  { key: "a", value: 3 },
+  { key: "b", value: 1 },
+  { key: "c", value: 2 },
+  { key: "a", value: 3 },
+  { key: "c", value: 5 },
+];
+console.log(groupByKey(input2));
+
+
+
+
+
+
+const mainElement = document.getElementById('result');
+const results = [
+  { label: 'Result1', value: JSON.stringify(count(input1)) },
+  { label: 'Result2', value: JSON.stringify(groupByKey(input2)) }
+];
+
+for (let i = 0; i < results.length; i++) {
+  const result = results[i];
+  const resultElement = document.createElement('p');
+  resultElement.textContent = `${result.label}: ${result.value}`;
+  mainElement.appendChild(resultElement);
+}
+
+
+
+
+
+
+
+</script>
+
+<style>
+
+p{
+    color:brown;
+    font-size: 20px;
+}
+
+main{border: 4mm ridge rgba(211, 220, 50, .6);}
+
+
+
+</style>
